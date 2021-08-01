@@ -1,2 +1,2 @@
 # vanilajs-minesweeper
-Minesweeper game written in Vanilla JavaScript
+Minesweeper game written in Vanilla JavaScript for web.
