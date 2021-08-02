@@ -21,12 +21,12 @@ const BOARD = document.querySelector(".board");
 
 let boardConfig = {
 	container: BOARD,
-	height: 6,
-	width: 6,
-	mines: 8,
+	height: 9,
+	width: 9,
+	mines: 10,
 };
 
-let jsBoard = new Board(BOARD);
+let jsBoard = new Board(...Object.values(boardConfig));
 jsBoard.fillBoard(BOARD);
 
 document.addEventListener("keydown", (e) => {
