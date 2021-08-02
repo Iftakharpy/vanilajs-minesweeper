@@ -1,0 +1,92 @@
+/* reset default styles */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--bg-color: #0d1419;
+	--fg-color: #bcc4c6;
+
+	--board-border-size: 1rem;
+	--board-border-color: var(var(--fg-color));
+	--board-border-style: solid;
+
+	--cell-height: 3rem;
+	--cell-width: 3rem;
+	--cell-text-color: rgb(255, 255, 255);
+	--cell-hidden-color: #939c9f;
+	--cell-marked-color: #d3e24b;
+	--cell-mine-color: #c93926;
+	--cell-revealed-color: #3cc926;
+}
+
+body {
+	min-height: 100vh;
+	min-width: 100vw;
+	background-color: var(--bg-color);
+	color: var(--fg-color);
+}
+
+.board,
+.board > .row,
+.row > .cell {
+	border: 1px solid red;
+}
+
+.board {
+	user-select: none;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: min-content;
+}
+
+.board > .row {
+	min-width: max-content;
+	display: flex;
+}
+
+.row > .cell {
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--cell-height);
+	width: var(--cell-width);
+	color: var(--cell-text-color);
+	font-size: larger;
+	font-weight: bold;
+}
+
+/* hide text */
+.cell[data-type="hidden"]::before,
+.cell[data-type="marked"]::before {
+	position: absolute;
+	z-index: 1;
+	content: "";
+	height: 100%;
+	width: 100%;
+	background-color: var(--cell-hidden-color);
+}
+
+.cell[data-type="marked"]::before {
+	background-color: var(--cell-marked-color);
+}
+.cell[data-type="mine"] {
+	background-color: var(--cell-mine-color);
+}
+.cell[data-type="count"] {
+	background-color: var(--cell-revealed-color);
+}
+
+/* .cell::after {
+	content: attr(data-id);
+	position: absolute;
+	z-index: 2;
+	height: 100%;
+	width: 100%;
+	background-color: var(--cell-hidden-color);
+} */
